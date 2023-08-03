@@ -17,6 +17,7 @@ void fractional_knapsack(vector<pair<int, int>> pairs, int knapsack_size){
   int current_weight=0;
 
   cout<<endl;  
+  
   for(int i=0;i<pairs.size();i++){
     if(current_weight+pairs[i].second<=knapsack_size){
       // CALCULATING FOR INTEGER
