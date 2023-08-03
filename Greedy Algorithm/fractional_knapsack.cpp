@@ -2,8 +2,10 @@
 using namespace std;
 
 bool compare(pair<int, int> a, pair<int, int> b){
-  // return (double)a.first/a.second>(double)b.first/b.second;
+  // USE MULTIPLICATION TO AVOID PRECISION LOSS
   return a.first*b.second>a.second*b.first;
+
+  // return (double)a.first/a.second>(double)b.first/b.second;
 }
 
 void fractional_knapsack(vector<pair<int, int>> pairs, int knapsack_size){
