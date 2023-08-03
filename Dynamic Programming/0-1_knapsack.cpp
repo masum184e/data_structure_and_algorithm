@@ -65,7 +65,7 @@ void zero_one_knapsack(vector<pair<int, int>> pairs, int knapsack_size){
 }
 
 int main(){
-  int knapsack_size, number_of_item, x, y;
+  int knapsack_size, number_of_item, profit, weight;
   vector<pair<int, int>> pairs;
 
   cout<<"Enter Number Of Item: ";
@@ -73,8 +73,8 @@ int main(){
 
   for(int i=0;i<number_of_item;i++){
     cout<<"Enter "<<i+1<<"th Item Profit and Weight: ";
-    cin>>x>>y;
-    pairs.push_back(make_pair(x, y));
+    cin>>profit>>weight;
+    pairs.push_back(make_pair(profit, weight));
   }
 
   cout<<"Enter Knapsack Size: ";
