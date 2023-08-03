@@ -24,6 +24,8 @@ void activity_selection(vector<pair<int, int>> pairs){
     }
   }
 
+  cout<<endl;
+
   // DISPLAYING SELECTED SEMINARS
   cout << "Selected Seminars:" << endl;
   for (auto seminar : selected_seminars) {
