@@ -19,7 +19,6 @@ void dfs(vector<vector<ll>> graph, ll source){
         cout<<current<<" ";
 
         for(ll i=vertices-1;i>=0;i--){
-            ll child=i;
             if(graph[current][i]==1 && !visited[i]){
                 dfsStack.push(i);
                 visited[i]=true;
