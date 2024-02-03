@@ -1,58 +1,58 @@
-#include <bits/stdc++.h>
+// FLOYD WARSHAL ALGORITHM
+#include<bits/stdc++.h>
 using namespace std;
-#define ll long long int
 
-void floydWarshall(vector<vector<ll>> graph){
-    ll vertices=graph.size();
+void floyd_warshal(vector<vector<int>> graph){
 
-    for(ll k=0;k<vertices;k++){
-        for(ll i=0;i<vertices;i++){
-            for(ll j=0;j<vertices;j++){
-                if(graph[i][k]!=INT_MAX && graph[k][j]!=INT_MAX && graph[i][k]+graph[k][j] < graph[i][j]){
-                    graph[i][j]=graph[i][k] + graph[k][j];
-                }
-            }
-        }
-    }
+  // CALCULATING SHORTEST PATH
+  for(int k=0;k<graph.size();k++)
+    for(int i=0;i<graph.size();i++)
+      for(int j=0;j<graph.size();j++)
+        if(graph[i][j]>(graph[i][k]+graph[k][j]) && graph[i][k]!=INT_MAX && graph[k][j]!=INT_MAX)
+          graph[i][j]=graph[i][k]+graph[k][j];
 
-    // DISPLAYING SHORTEST PATH
-    cout<<endl<<"Shortest Path Between Pair Of Vertices:"<<endl;
-    for(int i=0;i<vertices;i++){
-        for(int j=0;j<vertices;j++)
-        (graph[i][j]==INT_MAX)?cout<<"I"<<" ":cout<<graph[i][j]<<" ";
-        cout<<endl;
-    }
-
+  // DISPLAYING ALL PAIR SHORTEST PATH
+  cout<<endl<<"All Pairs Shortest Path:"<<endl;
+  for(int i=0;i<graph.size();i++){
+    for(int j=0;j<graph.size();j++)
+      (graph[i][j]==INT_MAX)?cout<<"INT_MAX ":cout<<graph[i][j]<<" ";
+    cout<<endl;
+  }
 }
 
 int main(){
-    // ios_base::sync_with_stdio(false);cin.tie(NULL);
-    ll vertices, edges;
+  int vertices, edges;
 
-    cout<<"Enter Number of Vertices and Edges: ";
-    cin>>vertices>>edges;
+  cout<<"Enter Number of Vertices and Edges: ";
+  cin>>vertices>>edges;
 
-    // INITIALIZING LOOP NODE 0 AND OTHER INFINITY
-    vector<vector<ll>> graph(vertices, vector<ll>(vertices, INT_MAX));
-    for(ll i=0;i<vertices;i++)graph[i][i]=0;
+  // INITIALIZING LOOP NODE 0 AND OTHER INFINITY
+  vector<vector<int>> graph;
+  for(int i=0;i<vertices;i++){
+    vector<int> v;
+    for(int j=0;j<vertices;j++)v.push_back(INT_MAX);
 
-    // GETTING INPUT
-    for(ll i=0;i<edges;i++){
-        ll from, to, weight;
-        cout<<"Enter "<<i+1<<"th Edges and Their Weights: ";
-        cin>>from>>to>>weight;
-        graph[from][to]=weight;
-    }
+    graph.push_back(v);
+    graph[i][i]=0;
+  }
 
-    // DISPLAYING GIVEN GRAPH
-    cout<<endl<<"Given Graph:"<<endl;
-    for(int i=0;i<vertices;i++){
-        for(int j=0;j<vertices;j++)
-        (graph[i][j]==INT_MAX)?cout<<"I"<<" ":cout<<graph[i][j]<<" ";
-        cout<<endl;
-    }
+  // GETTING INPUT
+  for(int i=0;i<edges;i++){
+    int from, to, weight;
+    cout<<"Enter "<<i+1<<"th Edges and Their Weights: ";
+    cin>>from>>to>>weight;
+    graph[from-1][to-1]=weight;
+  }
 
-    floydWarshall(graph);
+  // DISPLAYING GIVEN GRAPH
+  cout<<endl<<"Given Graph:"<<endl;
+  for(int i=0;i<vertices;i++){
+    for(int j=0;j<vertices;j++)
+      cout<<graph[i][j]<<" ";
+    cout<<endl;
+  }
 
-    return 0;
+  floyd_warshal(graph);
+
+  return 0;
 }
