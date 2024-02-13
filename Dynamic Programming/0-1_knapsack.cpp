@@ -19,14 +19,13 @@ void zero_one_knapsack(vector<pair<int, int>> pairs, int knapsack_size){
 
   // GETTING SELECTED ITEM
   int i,j;
-  i=pairs.size()-1;
+  i=pairs.size();
   j=knapsack_size;
   vector<bool> selected;
   while(i>0 && j>0){
     if(arr[i][j]!=arr[i-1][j]){
       selected.push_back(true);
-      j-=pairs[i].first;
-      if(j==0)selected.push_back(false);
+      j-=pairs[i-1].second;
     }else{
       selected.push_back(false);
     }
@@ -46,10 +45,10 @@ void zero_one_knapsack(vector<pair<int, int>> pairs, int knapsack_size){
   cout<<endl;
 
   // DISPLAYING SELECTED ITEM
-  cout<<"Selected Item:";
-  for(auto j: selected){
-    cout<<" "<<j;
-  }
+  cout<<"Selected Items:";
+  for(int i=0;i<selected.size();i++)
+    if(selected[i])
+        cout<<" "<<i+1;
 
   cout<<endl;
 
