@@ -18,6 +18,9 @@ int main(){
   cout<<"Enter The Elements of The Array: ";
   for(int i=0;i<size;i++)cin>>arr[i];
 
+  cout<<"Enter Search Element From The Array: ";
+  cin>>search_item;
+
   found_status=linear_search(arr, size, search_item);
   cout<<found_status<<endl;
 
