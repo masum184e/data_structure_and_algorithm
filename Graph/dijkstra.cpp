@@ -2,11 +2,21 @@
 using namespace std;
 #define ll long long int
 
+void printShortestPath(const vector<ll>& parent, ll dest) {
+    if (parent[dest]==-1){
+        cout<<dest;
+        return;
+    }
+    printShortestPath(parent, parent[dest]);
+    cout<<" -> "<<dest;
+}
+
 void dijkstra(vector<vector<ll>> graph, ll source){
     ll vertices=graph.size();
 
     set<pair<ll,ll>> pq;
     vector<ll> distance(vertices,LLONG_MAX);
+    vector<ll> parent(vertices, -1);
 
     pq.insert({0,source});
     distance[source]=0;
@@ -23,13 +33,21 @@ void dijkstra(vector<vector<ll>> graph, ll source){
                 pq.erase({distance[i],i});
                 distance[i]=distance[node]+graph[node][i];
                 pq.insert({distance[i],i});
+                parent[i]=node;
             }
         }
     }
 
     cout<<endl<<"Minimum Distances From Source Node "<<source<<":"<<endl;
-    for(ll i=0;i<vertices;i++)
-        (distance[i]==LLONG_MAX)?cout<<"Vertex "<<i<<": Not Reachable"<<endl:cout<<"Vertex "<<i<<": "<<distance[i]<<endl;
+    for(ll i=0;i<vertices;i++){
+        if(distance[i]==LLONG_MAX){
+            cout<<"Vertex "<<i<<": Not Reachable"<<endl;
+        }else{
+            cout<<"Vertex "<<i<<": "<<distance[i]<<" Path: ";
+            printShortestPath(parent, i);
+            cout<<endl;
+        }
+    }
 }
 
 int main(){
@@ -49,6 +67,7 @@ int main(){
         cout<<"Enter "<<i+1<<"th Edges and Their Weights: ";
         cin>>from>>to>>weight;
         graph[from][to]=weight;
+        graph[to][from]=weight;
     }
 
     int source;
