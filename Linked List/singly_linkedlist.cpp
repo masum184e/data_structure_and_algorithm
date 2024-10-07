@@ -36,6 +36,51 @@ Node* insertAtBeginning(Node* head, int data){
     return newNode;
 }
 
+Node* removeHead(Node* head){
+    if(head==nullptr)head;
+
+    Node* temp=head;
+    head=head->next;
+    delete temp;
+}
+
+Node* removeLastNode(Node* head){
+    if(head==nullptr)head;
+    if(head->next==nullptr){
+        delete head;
+        head=nullptr;
+        return head;
+    }
+
+    Node* temp=head;
+    while(temp->next->next!=nullptr){
+        temp=temp->next;
+    }
+
+    delete temp->next;
+    temp->next=nullptr;
+
+    return head;
+}
+
+Node* removeAtPosition(Node* head, int index){
+    if(head==nullptr)return head;
+    if(index==0)return removeHead(head);
+
+    Node* temp=head;
+    while (index-- && temp->next != nullptr) {
+        temp = temp->next;
+    }
+
+    if (temp == nullptr || temp->next == nullptr) return head;
+
+    Node* nodeToDelete = temp->next;
+    temp->next = temp->next->next;
+    delete nodeToDelete;
+
+    return head;
+}
+
 void displayList(Node* head){
     Node* temp = head;
     

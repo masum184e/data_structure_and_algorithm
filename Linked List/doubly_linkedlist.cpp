@@ -69,6 +69,63 @@ Node* insertAtIndex(Node* head, int data, int index){
     return head;
 }
 
+Node* removeHead(Node* head){
+    if(head==nullptr)return head;
+
+    Node* temp=head;
+    head=head->next;
+
+    if (head != nullptr) {
+        head->prev = nullptr;
+    }
+
+    delete temp;
+
+    return head;
+}
+
+Node* removeLastNode(Node* head){
+    if(head==nullptr)head;
+    if(head->next==nullptr){
+        delete head;
+        head=nullptr;
+        return head;
+    }
+
+    Node* temp=head;
+    while(temp->next != nullptr) {
+        temp = temp->next;
+    }
+
+    temp->prev->next = nullptr;
+    delete temp;
+
+    return head;
+}
+
+Node* removeAtPosition(Node* head, int index){
+    if(head==nullptr)return head;
+    if(index==0)return removeHead(head);
+
+    Node* temp=head;
+    while (index-- && temp->next != nullptr) {
+        temp = temp->next;
+    }
+
+    if (temp == nullptr || temp->next == nullptr) return head;
+
+    if (temp->next != nullptr) {
+        temp->next->prev = temp->prev;
+    }
+    if (temp->prev != nullptr) {
+        temp->prev->next = temp->next;
+    }
+
+    delete temp;
+
+    return head;
+}
+
 Node* reverseDLL(Node* head){
     if(head==nullptr)return nullptr;
 
