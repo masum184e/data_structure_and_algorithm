@@ -95,9 +95,24 @@ void displayListRecursive(Node* head){
     if(head==nullptr){
         cout << "NULL" << endl;
         return;
-    }
+    } 
     cout<<head->data<<" -> ";
     displayListRecursive(head->next);
+}
+
+int countNodes(Node* head) {
+    if (head == nullptr) return 0;
+    return 1 + countNodes(head->next);
+}
+
+int sumOfNodes(Node* head) {
+    if (head == nullptr) return 0;
+    return head->data + sumOfNodes(head->next);
+}
+
+int findMax(Node* head) {
+    if (head == nullptr) return INT_MIN;
+    return max(head->data, findMax(head->next));
 }
 
 int32_t main(){
