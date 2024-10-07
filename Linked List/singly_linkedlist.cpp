@@ -46,6 +46,15 @@ void displayList(Node* head){
     cout << "NULL" << endl;
 }
 
+void displayListRecursive(Node* head){
+    if(head==nullptr){
+        cout << "NULL" << endl;
+        return;
+    }
+    cout<<head->data<<" -> ";
+    displayListRecursive(head->next);
+}
+
 int32_t main(){
 
     Node* head = nullptr;
@@ -55,6 +64,7 @@ int32_t main(){
     head = insertAtEnd(head, 30);
     head = insertAtBeginning(head, 5);
     displayList(head);
+    displayListRecursive(head);
 
     return 0;
 }
