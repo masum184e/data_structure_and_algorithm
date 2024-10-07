@@ -36,6 +36,28 @@ Node* insertAtBeginning(Node* head, int data){
     return newNode;
 }
 
+
+Node* insertAtIndex(Node* head, int data, int index){
+    if(index<0){
+        cout<<"Invalid index."<<endl;
+        return head;
+    }
+
+    if(index==0)
+        return insertAtBeginning(head, data);
+
+    Node* newNode=createNode(data);
+    Node* temp = head;
+    while (index-- && temp->next != nullptr) {
+        temp = temp->next;
+    }
+
+    newNode->next = temp->next;
+    temp->next = newNode;
+
+    return head;
+}
+
 Node* removeHead(Node* head){
     if(head==nullptr)head;
 
