@@ -108,11 +108,11 @@ Node* removeAtPosition(Node* head, int index){
     if(index==0)return removeHead(head);
 
     Node* temp=head;
-    while (index-- && temp->next != nullptr) {
+    while (index-- && temp != nullptr) {
         temp = temp->next;
     }
 
-    if (temp == nullptr || temp->next == nullptr) return head;
+    if (temp == nullptr) return head;
 
     if (temp->next != nullptr) {
         temp->next->prev = temp->prev;
