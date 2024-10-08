@@ -103,6 +103,20 @@ Node* removeAtPosition(Node* head, int index){
     return head;
 }
 
+Node* vectorToLL(vector<int> vec){
+    Node* head=new Node(vec[0]);
+    Node* current=head;
+    
+    for(int i=1;i<vec.size();i++){
+        Node* newNode=new Node(vec[i]);
+        current->next=newNode;
+        newNode->prev=current;
+        current=newNode;
+    }
+    
+    return head;
+}
+
 void displayList(Node* head){
     Node* temp = head;
     
