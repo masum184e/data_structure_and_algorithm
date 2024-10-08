@@ -103,6 +103,34 @@ Node* removeAtPosition(Node* head, int index){
     return head;
 }
 
+Node* reverseLL(Node* head){
+    Node* prev = nullptr;
+    Node* current = head;
+    Node* next = nullptr;
+
+    while (current != nullptr) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+
+    return prev;
+}
+
+Node* reverseLLRecursive(Node* head){
+    if (head == nullptr || head->next == nullptr) {
+        return head;
+    }
+
+    Node* newHead = reverseLL(head->next);
+
+    head->next->next = head;
+    head->next = nullptr;
+
+    return newHead;
+}
+
 Node* vectorToLL(vector<int> vec){
     Node* head=new Node(vec[0]);
     Node* current=head;
