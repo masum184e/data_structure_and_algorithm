@@ -4,6 +4,7 @@
 - [Selection Sort](#selection-sort)
 - [Insertion Sort](#insertion-sort)
 - [Merge Sort](#merge-sort)
+- [Quick Sort](#quick-sort)
 
 # Bubble Sort
 
@@ -192,3 +193,52 @@ Combine the two sorted halves into a single sorted array by comparing elements f
 
 - large dataset
 - suitable for linked lists because it avoids the overhead of random access.
+
+# Quick Sort
+
+Quick Sort is a divide-and-conquer sorting algorithm that works by selecting a "pivot" element and partitioning the array around the pivot.
+
+The goal is to move smaller elements to the left of the pivot and larger elements to the right. The process is then recursively applied to the sub-arrays.
+
+## Implementation
+
+### Pivot Selection
+
+The pivot is an element around which the array will be partitioned. Popular strategies include:
+
+- First element - may lead to poor performancefor sorted/revers sorted arrays
+- Last element - similar limatations as first element
+- Random - helps by avoiding worst-case scenarios
+- Medeian of first, last, middle
+
+### Partitioning
+
+- The array is rearranged such that:
+  - All elements smaller than the pivot are moved to its left.
+  - All elements larger than the pivot are moved to its right.
+- This ensures the pivot is in its correct position in the sorted array.
+- `swap(arr[i], arr[j]);` may swap itself.
+
+### Recursion
+
+Apply the same steps to the left and right sub-arrays.
+
+## Charecterstics
+
+- **`In-Place Sorting`** - no extra memory required during partitioning, recursive call use the function stack for managing sub-problems, but this space usage is not considered "external memory".
+- **Space Complexity:** `O(log n)` - due to recursive calls in the function stack.
+- **Time Complexity:**
+  - Worst Case: O(n<sup>2</sup>) - occurs when the pivot consistently produces unbalanced partitions(smallest/largest)
+  - Best Case: O(n log n) - occurs when the partition is balanced(equal element)
+  - Average Case: O(n log n)
+- **Number of Comparisons:** It depends on the pivot selection and how the array is partitioned at each step. in worst case n\*(n+1)/2 comparison will occur such as pivot is largest/smalles element.
+  - first partion produces one sub array with n-1 item and another one is 0
+  - second partion produces one sub array with n-2 item and another one is 1
+- **Number of Swaps:** after making a comparison swap has been performed. so max swap can be n\*(n+1)/2
+- **Stability:** - It is not stable, meaning that it might change the relative order of equal elements if swapping places them differently.
+
+## When to use
+
+- large dataset
+- in-place sorting
+- Performs well with random inputs compared to already sorted or reverse-sorted arrays.
