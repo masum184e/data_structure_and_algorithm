@@ -2,6 +2,8 @@
 
 - [Bubble Sort](#bubble-sort)
 - [Selection Sort](#selection-sort)
+- [Insertion Sort](#insertion-sort)
+- [Merge Sort](#merge-sort)
 
 # Bubble Sort
 
@@ -19,23 +21,26 @@
 Traverse the array from first to second last(`size-1`) element and for each iteration assume the largest unsorted element "bubbles up" to its correct position.
 
 ### Inner Loop
+
 Compare adjacent elements. If the current element is greater than the next element, swap them.
 
 It perform sorting from right to left, and in each iteration the from the last to last `i`th item has been sorted, so we don't need to iterate them so inner loop will continue at `size-i-1` times.
 
 ### Optimization
+
 Outer loop doesnn't have anything with the element of the array. Inner loop compare and bubbles up the element. Outer loop is just counting the element means how much times the array needs to bubbles up(the number of time inner loop should run)
 
 Inner loop is comparing adjacent element and bubbles up, if no perform in on outer loop iteration means the array is already sorted, so we don't need to run the outer loop again.
 
 ## Charecterstics
+
 - **`In-Place Sorting`** - no extra memory required
 - **Space Complexity:** `O(1)`
-no extra memory required
+  no extra memory required
 - **Time Complexity:**
-    - Worst Case: O(n<sup>2</sup>) - when the list is in reverse order and requires maximum comparisons and swaps
-    - Best Case: O(n<sup>2</sup>) - when the list is already sorted, and no swaps are needed in a single pass.
-    - Average Case: O(n<sup>2</sup>)
+  - Worst Case: O(n<sup>2</sup>) - when the list is in reverse order and requires maximum comparisons and swaps
+  - Best Case: O(n<sup>2</sup>) - when the list is already sorted, and no swaps are needed in a single pass.
+  - Average Case: O(n<sup>2</sup>)
 - **Number of Swaps:** - In the worst-case scenario, the number of swaps performed by Bubble Sort is equal to the maximum number of inversions in the list. An inversion is a pair of elements where the earlier element is greater than the later one. In the worst case, the list is sorted in reverse order, and every element needs to be swapped into its correct position. That means we need n\*(n-1)/2 swaps
 - **Number of Comparisons:**
   - first iteration it compare n-1 items
@@ -44,6 +49,7 @@ no extra memory required
 - **Stability:** - It is not stable, meaning that it might change the relative order of equal elements if swapping places them differently.
 
 ## When to use
+
 - small dataset
 - memory constraint
 - educational purpose
@@ -99,3 +105,90 @@ if first and smallest element are same no swap are required
 - minimum swaping requires
 - memory is constrained
 - small dataset
+
+# Insertion Sort
+
+It mimics how we might sort playing cards in our hands.
+
+It works by dividing the array into a sorted and an unsorted portion. The algorithm progressively takes elements from the unsorted portion and inserts them into their correct position within the sorted portion.
+
+## Implementation
+
+- Outer Loop
+- Inner Loop
+- Shifting
+
+### Outer Loop
+
+The first item is considered sorted by default. Outer loop iterates through the unsorted portion, pick one element at a time and placing it into the correct position in the sorted portion
+
+### Inner Loop
+
+Inner loop is used to find out where the insertion should be performed. It iterate from the last element of sorted portion until lesser value of current element is not found. Until the lesser value is found the item from sorted portion shift one place right.
+
+### Shifting
+
+It shifts elements instead of swapping. A variable `j` is declared to track where to insert or the last index of the sorted portion after performing shifting operation.
+
+## Charecterstics
+
+- **`In-Place Sorting`** - no extra memory required
+- **Space Complexity**: `O(1)` no extra memory required
+- **Time Complexity:**
+  - Worst Case: O(n<sup>2</sup>) - the array is sorted in reverse order.
+  - Best Case: O(n) - No shifting is required; each element is compared once and placed immediately.
+  - Average Case: O(n<sup>2</sup>)
+- **Number of Shift:** - in worst case at most n\*(n-1)/2 shift is performed.
+- **Number of Comparisons:**
+  - first iteration it compare n-1 items
+  - secont iteration it compare n-2 items
+  - so total comparison is n\*(n-1)/2
+- **Stability:** - It is stable, meaning that it keep the relative order of equal elements.
+
+## When to use
+
+- small dataset
+- memory constraint
+- array is nearly sorted
+- minimum comparison required\
+
+# Merge Sort
+
+Merge Sort is a divide-and-conquer sorting algorithm that splits an array into smaller subarrays, sorts those subarrays, and then merges them back together in a sorted manner.
+
+## Implementation
+
+- Merge Sort
+- Merge
+
+### Merge Sort
+
+- divide the array into two equal part(`int mid = left + (right - left) / 2;`).
+- splitting the array should be continued until each subarray contains a single element or is empty.
+- splitting occurs recursively untile the most left node is found, when the most left node is found, it traverse to right one, and it contues untill all element is splitted.
+
+### Merge
+
+Combine the two sorted halves into a single sorted array by comparing elements from each half and inserting the smaller one into the final array.
+
+- extract the size of both array.
+- copy data from main array to temporary array.
+- compare and merge same amount of item from both array.
+- merge remaining item of left array.
+- merge remaining item of right array.
+
+## Charecterstics
+
+- **Space Complexity**: `O(n)` - due to the temporary arrays used during merging.
+- **Time Complexity:**
+  - Worst Case: O(n log n)
+  - Best Case: O(n log n)
+  - Average Case: O(n log n)
+  - The `log n` factor comes from the division of the array, and the `n` factor comes from the merging process.
+- **Number of Comparisons:** in each step there will be `n` number of comparison and there have total `log n` step so total comparison is `n log n`.
+- **Stability:** - It is stable, meaning that it keep the relative order of equal elements.
+
+## When to use
+
+- large dataset
+- suitable for linked lists because it avoids the overhead of random access.
