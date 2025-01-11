@@ -5,6 +5,8 @@
 - [Insertion Sort](#insertion-sort)
 - [Merge Sort](#merge-sort)
 - [Quick Sort](#quick-sort)
+- [Dutch National Flag](#dutch-national-flag)
+- [Count Sort](#count-sort)
 
 # Bubble Sort
 
@@ -242,3 +244,45 @@ Apply the same steps to the left and right sub-arrays.
 - large dataset
 - in-place sorting
 - Performs well with random inputs compared to already sorted or reverse-sorted arrays.
+
+# Dutch National Flag
+
+It is used for rearranging elements in an array based on multiple distinct categories. It is commonly used when elements need to be categorized into three groups.
+
+## Implementation
+
+- Use a three-pointer approach with `low`, `mid`, and `high`.
+- Initialize:
+  - `low = 0` - track the first category.
+  - `mid = 0` - scan the array.
+  - `high = size - 1` - track the last category.
+- Traverse the array and swap elements into their correct positions:
+  - `arr[mid] == 0` - swap with `low` and increment both `low` and `mid`.
+  - `arr[mid] == 1` - increment the mid
+  - `arr[mid] == 2` - swap with `high` and decerement `high`
+
+## Charecterstics
+
+- **Time Complexity:** `O(n)`
+- **Space Complexity:** `O(1)`
+- It rearranges elements in a single pass
+- In-place Rearrangement
+
+# Count Sort
+
+It is a `non-comparison-based` sorting algorithm that works well for sorting integers or items with a `limited range` of discrete values. It is especially efficient when the range of input values is not significantly larger than the number of elements.
+
+The algorithm works by counting the occurrences of each element and using this information to place elements in their correct position in the sorted array.
+
+## Implementation
+
+### Find the count of every distinct element
+
+- size of count array will be the maximum value from the array.
+- traverse the array and count all the distinct element
+- extract cumulative sum of counts which optimize extraction of position of each item.
+
+## Charecterstics
+
+- **Space Complexity:** `O(n + k)` - n is the number of elements and k is the range of the input.
+- **Time Complexity:** `O(n + k)` - n is the number of elements and k is the range of the input.
