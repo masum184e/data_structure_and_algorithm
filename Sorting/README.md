@@ -1,5 +1,6 @@
 # Contents
 
+- [Practice Problem](#practice-problem)
 - [Bubble Sort](#bubble-sort)
 - [Selection Sort](#selection-sort)
 - [Insertion Sort](#insertion-sort)
@@ -7,6 +8,11 @@
 - [Quick Sort](#quick-sort)
 - [Dutch National Flag](#dutch-national-flag)
 - [Count Sort](#count-sort)
+
+# Practice Problem
+
+- [GeeksforGeeks](https://www.geeksforgeeks.org/sorting-algorithms/)
+- [Leetcode](https://leetcode.com/problem-list/sorting/)
 
 # Bubble Sort
 
@@ -195,6 +201,33 @@ Combine the two sorted halves into a single sorted array by comparing elements f
 
 - large dataset
 - suitable for linked lists because it avoids the overhead of random access.
+
+## Practice
+
+**Basic:**
+
+1. [Merge Sort Implementation - GeeksforGeeks](https://www.geeksforgeeks.org/merge-sort/)
+2. [Count Inversions in an Array - GeeksforGeeks](https://www.geeksforgeeks.org/counting-inversions/)
+3. [Sorting Strings Using Merge Sort - GeeksforGeeks](https://www.geeksforgeeks.org/sort-characters-string/)
+
+**Intermediate Problems:**
+
+4. [Kth Smallest Element in Sorted Matrix - LeetCode](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/)
+5. [Merge K Sorted Arrays - GeeksforGeeks](https://www.geeksforgeeks.org/merge-k-sorted-arrays/)
+6. [Median of Two Sorted Arrays - LeetCode](https://leetcode.com/problems/median-of-two-sorted-arrays/)
+7. [Check If Arrays Are Identical - GeeksforGeeks](https://www.geeksforgeeks.org/check-two-arrays-equal-not/)
+
+**Advanced Problems:**
+
+8. [Merge Sort for Linked List - GeeksforGeeks](https://www.geeksforgeeks.org/merge-sort-for-linked-list/)
+9. [Closest Pair of Points Using Divide and Conquer - GeeksforGeeks](https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm/)
+10. [Reverse Pairs - LeetCode](https://leetcode.com/problems/reverse-pairs/)
+11. [Maximum Sum of Non-Overlapping Subarrays - GeeksforGeeks](https://www.geeksforgeeks.org/maximum-sum-of-k-non-overlapping-subarrays/)
+
+**Platform:**
+
+- [LeetCode](https://leetcode.com/problem-list/merge-sort/)
+- [GeeksforGeeks](https://www.geeksforgeeks.org/merge-sort-based-practice-problems/)
 
 # Quick Sort
 
