@@ -9,6 +9,10 @@
   - [Stack vs Heap](#comparison-stack-vs-heap)
   - [Allocation](#allocation)
 - [Data Structure](#data-structure)
+- [Matrices](#matrices)
+  - [Toeplitz Matrix](#toeplitz-matrix)
+  - [Tri Diagonal Matrix](#tri-diagonal-matrix)
+  - [Tri Band Matrix](#tri-band-matrix)
 
 # Asymptotic Notations
 
@@ -136,3 +140,64 @@ Logical data structure uses physical data structure to implement itself.
 - How data is conceptually organized and how operation performed on it.
 - It define relationships, hierarchy.
 - Examples: **Stack, Queue**.
+
+# Matrices
+
+- The size of `non-zero` element in upper/lower triangle matrices is `n(n+1)/2`, the size of `zero` element is `n(n-1)/2`.
+- The ith item of row major upper/lower triangle matrices is `(i(i-1)/2)+j-1`
+- Symmetric matrices can be representede by lower/upper triangluar matrices
+
+## Toeplitz Matrix
+
+A Toeplitz matrix (also known as a diagonally constant matrix) is a special type of matrix where each descending diagonal from left to right is constant. This means that all elements along any given diagonal from the top-left to the bottom-right are identical.
+
+In a one dimensional array initially store the first row, then store the first column.
+
+**Example:**
+
+Let's consider a 4×5 matrix:
+
+```
+       1 2 3 4 5
+       6 1 2 3 4
+       7 6 1 2 3
+       8 7 6 1 2
+```
+
+## Tri-Diagonal Matrix
+
+A tri-diagonal matrix is a special type of square matrix where nonzero elements appear only on the main diagonal, upper diagonal, and lower diagonal. All other elements are zero.
+
+In a one dimensional array the lower diagonal stores first, then main diagonal and finally upper diagonal.
+
+**Example:**
+
+```
+       2 -1  0  0  0
+      -1  2 -1  0  0
+       0 -1  2 -1  0
+       0  0 -1  2 -1
+       0  0  0 -1  2
+```
+
+## Tri-Band Matrix
+
+A tri-band matrix (also called a band matrix with bandwidth 3) is a generalization of a tri-diagonal matrix. In a tri-band matrix, there are nonzero elements on the main diagonal, two upper diagonals, and two lower diagonals, while the rest are zero.
+
+**Example:**
+
+```
+       2 -1  1  0  0
+      -1  2 -1  1  0
+       2 -1  2 -1  1
+       0  3 -1  2 -1
+       0  0  4 -1  2
+```
+
+## Manipulation
+
+| Matrix Type      | Storage in 1D        | Access Formula (O(1))                                                                                                                             |
+| ---------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Toeplitz**     | `n + m - 1` elements | `T[j - i + (n-1)]`                                                                                                                                |
+| **Tri-Diagonal** | `3n - 2` elements    | **Main:** `T[n-1 + i]` <br> **Lower:** `T[i-1]` <br> **Upper:** `T[2n-2 + j]`                                                                     |
+| **Tri-Band**     | `5n - 6` elements    | **Main:** `T[2n-2 + i]` <br> **Lower-1:** `T[n-2 + i]` <br> **Lower-2:** `T[i-2]` <br> **Upper-1:** `T[3n-3 + j]` <br> **Upper-2:** `T[4n-6 + j]` |
