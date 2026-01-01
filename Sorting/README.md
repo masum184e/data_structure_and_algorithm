@@ -63,6 +63,11 @@ Inner loop is comparing adjacent element and bubbles up, if no perform in on out
 - memory constraint
 - educational purpose
 
+## Recursion Implementation
+- Outer loop iterate through `0` to `n-1`
+- So make a recursion call that can iterate the whole array
+- Outer loop just count how much time the array should bubble up, so make a recursion call that simply count the number of time array should bubbles up
+
 # Selection Sort
 
 - It is a simple comparison-based sorting algorithm.
